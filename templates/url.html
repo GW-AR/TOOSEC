@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Check URL</title>
+  <link rel="stylesheet" href="../static/css/url.css" />
+</head>
+<body>
+  <div class="background-overlay"></div>
+  <div class="navbar">
+    <div class="logo">TOOSEC</div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="password.html">Generate</a>
+      <a href="encrypt.html">Encrypt</a>
+      <a href="decrypt.html">Decrypt</a>
+      <a href="url.html" class="active">Check URL</a>
+    </div>
+    <button class="sign-in-btn">Sign in</button>
+  </div>
+
+  <div class="encrypt-container">
+    <h1>CHECK URL SAFETY</h1>
+
+    <div class="messages-grid">
+      <div class="message-box">
+        <h2>ENTER URL:</h2>
+        <input type="text" id="urlInput" placeholder="https://example.com" />
+        <div class="encrypt-buttons">
+          <button class="action-btn">Check</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="messages-grid">
+    <div class="message-box">
+        <h2><span class="highlight-blue">RESULT:</span></h2>
+        <div id="result" style="padding-top: 10px;">Awaiting input...</div>
+      </div>
+  </div>
+
+
+</body>
+</html>

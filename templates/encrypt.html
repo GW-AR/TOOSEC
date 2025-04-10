@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TOOSEC - Encrypt</title>
+  <link rel="stylesheet" href="../static/css/encrypt.css" />
+</head>
+<body>
+  <div class="background-overlay"></div>
+  <header class="navbar">
+    <div class="logo">TOOSEC</div>
+    <nav class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="password.html">Generate</a>
+      <a href="encrypt.html" class="active">Encrpyt</a>
+      <a href="decrypt.html">Decrypt</a>
+      <a href="url.html">Check URL</a>
+    </nav>
+    <button class="sign-in-btn">Sign in</button>
+  </header>
+
+  <main class="encrypt-container">
+    <h1>ENCRYPT YOUR MESSAGE</h1>
+
+    <div class="cipher-selector">
+      <select>
+        <option selected>Caesar Cipher</option>
+        <option>Vigenère Cipher</option>
+        <option>Base64</option>
+        <option>ROT13</option>
+      </select>
+    </div>
+
+    <div class="messages-grid">
+      <div class="message-box">
+        <h2>ORIGINAL MESSAGE:</h2>
+        <textarea placeholder="Type your message here..."></textarea>
+      </div>
+
+      <div class="message-box encrypted">
+        <h2><span class="highlight-blue">ENCRYPTED</span> MESSAGE:</h2>
+        <textarea readonly placeholder="Encrypted output..."></textarea>
+      </div>
+
+    </div>
+    <label for="cipher-key">Encryption Key:</label>
+    <input type="text" id="cipher-key" placeholder="e.g. 4 or SECRET" />
+
+
+    </div>
+  </main>
+</body>
+</html>

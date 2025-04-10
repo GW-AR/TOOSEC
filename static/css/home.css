@@ -1,0 +1,130 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    background-image: url('/static/images/tlo.jpg');
+    background-size: cover;
+    min-height: 100vh;
+  }
+  
+
+  body > *:not(.background-overlay) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 90vh;
+    padding: 0 20px;
+    color: white;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero h1 {
+    font-size: 5.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  
+  .hero .thin {
+    font-weight: 300;
+  }
+  
+  .hero .bold {
+    font-weight: 900;
+  }
+  
+  .hero p {
+    max-width: 700px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background-color: transparent;
+    color: white;
+  }
+  
+  .logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .nav-links a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  
+  .sign-in-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Hero section */
+  .hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 60px;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+  }
+  
+  .hero-text {
+    max-width: 600px;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  
+  .highlight {
+    font-size: 3.5rem;
+    font-weight: 800;
+  }
+  
+  .hero p {
+    line-height: 1.8;
+    font-size: 0.95rem;
+    color: #d0d0d0;
+  }
+  
