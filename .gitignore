@@ -1,0 +1,28 @@
+# Python cache & compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment (bardzo ważne)
+.venv/
+env/
+venv/
+
+# VSCode / PyCharm / inne IDE
+.vscode/
+.idea/
+*.iml
+
+# Systemowe śmieci
+.DS_Store
+Thumbs.db
+
+# Logi / pliki tymczasowe
+*.log
+*.tmp
+
+# Inne zależności (jeśli kiedyś użyjesz pipenv/poetry)
+Pipfile.lock
+poetry.lock
+
+.idea/
