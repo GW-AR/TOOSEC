@@ -1,5 +1,5 @@
-from flask import Flask
-from flask import render_template
+from flask import Flask # type: ignore
+from flask import render_template # type: ignore
 app = Flask(__name__)
 
 @app.route('/')
