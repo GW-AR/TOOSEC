@@ -60,10 +60,8 @@ class Password():
                 letter.upper()
             password_list.append(letter)
 
-        print(password_list)
         random.shuffle(password_list)
         delimeter = ''
         password = delimeter.join(password_list)
-        print(password)
 
         return password
