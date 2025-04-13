@@ -19,6 +19,8 @@ class Url:
         self.address_url = url
         self.results_list = []
         self.list_of_security_tools = []
+        self.list_of_analysis_stats = []
+        self.number_of_security_tools = 0
 
     def check_url_address(self):
 
@@ -39,3 +41,15 @@ class Url:
             "category" : response_get['data']['attributes']['last_analysis_results'][elm]['category'],
             "result" : response_get['data']['attributes']['last_analysis_results'][elm]["result"]
         } for elm in response_get['data']['attributes']['last_analysis_results']}
+
+        self.list_of_analysis_stats = {
+            "malicious" : int(response_get['data']['attributes']['last_analysis_stats']['malicious']),
+            "suspicious": int(response_get['data']['attributes']['last_analysis_stats']['suspicious']),
+            "undetected" : int(response_get['data']['attributes']['last_analysis_stats']['undetected']),
+            "harmless" : int(response_get['data']['attributes']['last_analysis_stats']['harmless']),
+            "timeout" : int(response_get['data']['attributes']['last_analysis_stats']['timeout'])
+        }
+
+        self.number_of_security_tools = len(self.list_of_security_tools)
+
+

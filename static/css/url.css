@@ -70,6 +70,7 @@
   }
   
   .encrypt-container h1 {
+    color: #ffffff;
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 30px;
@@ -83,6 +84,12 @@
     margin-bottom: 50px;
     background-color: #1f2e5a;
     color: white;
+  }
+
+    .encrypt-container_results {
+    padding: 20px 60px;
+    text-align: center;
+    color: #f1f1f1;
   }
   
   /* Message Grid */
@@ -230,4 +237,30 @@
   font-weight: bold;
 }
 
-  
+
+/* Bootstrap*/
+
+.progress {
+  margin: 20px auto;
+  height: 50px !important;
+  width: 80%;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.progress-bar {
+  height: 100% !important;
+  line-height: 100px;
+  font-weight: bold;
+}
+
+.text-inside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-weight: bold;
+  font-size: 2rem !important;
+}
+
