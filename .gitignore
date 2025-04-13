@@ -24,3 +24,5 @@ Thumbs.db
 # Inne zależności (jeśli kiedyś użyjesz pipenv/poetry)
 Pipfile.lock
 poetry.lock
+.env
+.idea
