@@ -21,25 +21,52 @@
   </div>
 
   <div class="encrypt-container">
+    {% if page_object.address_url != ""%}
+    <h1>{{ page_object.address_url }}</h1>
+    {% else %}
     <h1>CHECK URL SAFETY</h1>
+    {% endif %}
 
-    <div class="messages-grid">
-      <div class="message-box">
-        <h2>ENTER URL:</h2>
-        <input type="text" id="urlInput" placeholder="https://example.com" />
-        <div class="encrypt-buttons">
-          <button class="action-btn">Check</button>
+    <form method="post" action="{{ url_for('url') }}">
+      <div class="messages-grid">
+        <div class="message-box">
+          <h2>ENTER URL:</h2>
+          <input name="link_url" type="text" id="urlInput"
+          {% if page_object.address_url != ""%}
+            placeholder="{{page_object.address_url}}"
+          {% else %}
+            placeholder="https://example.com"
+          {% endif %}
+          />
+          <div class="encrypt-buttons">
+            <button class="submit">Check</button>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
+
   </div>
 
-  <div class="messages-grid">
-    <div class="message-box">
-        <h2><span class="highlight-blue">RESULT:</span></h2>
-        <div id="result" style="padding-top: 10px;">Awaiting input...</div>
-      </div>
+  <div class="results-grid">
+    {% if page_object.address_url != "" %}
+      {% for tool in page_object.list_of_security_tools %}
+        <div class="result-card">
+          <h3 class="tool-name">{{ tool }}</h3>
+          <ul class="details-list">
+            <li><span class="label">Method:</span> {{ page_object.results_list[tool]['method'] }}</li>
+            <li><span class="label">Category:</span> {{ page_object.results_list[tool]['category'] }}</li>
+            <li>
+              <span class="label">Result:</span>
+              <span class="result {{ page_object.results_list[tool]['result'] | lower }}">
+                {{ page_object.results_list[tool]['result'] }}
+              </span>
+            </li>
+          </ul>
+        </div>
+      {% endfor %}
+    {% endif %}
   </div>
+
 
 
 </body>
