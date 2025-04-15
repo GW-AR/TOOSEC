@@ -10,12 +10,17 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.route('/encrypt', methods=['POST'])
+@app.route('/encrypt', methods=['GET', 'POST'])
 def encrypt():
-    message = request.form.get("message")
-    cipher = request.form.get("cipher")
-    key = request.form.get("key")
-    return render_template('encrypt.html', message=message, cipher=cipher, key=key)
+    if request.method == "POST":
+        message = request.form.get("message")
+        cipher = request.form.get("cipher")
+        key = request.form.get("key")
+        cezar = encryption.CaesarCipher(key=key, message=message)
+        encrypted_text = cezar.encrypt()
+        return render_template('encrypt.html', message=message, cipher=cipher, key=key, en_text=encrypted_text)
+    else:
+        return render_template('encrypt.html')
 
 
 if __name__ == '__main__':
