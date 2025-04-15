@@ -18,37 +18,43 @@
       <a href="url.html">Check URL</a>
     </nav>
     <button class="sign-in-btn">Sign in</button>
+    
   </header>
 
   <main class="encrypt-container">
     <h1>ENCRYPT YOUR MESSAGE</h1>
-
-    <div class="cipher-selector">
-      <select>
-        <option selected>Caesar Cipher</option>
-        <option>Vigenère Cipher</option>
-        <option>Base64</option>
-        <option>ROT13</option>
-      </select>
-    </div>
-
-    <div class="messages-grid">
-      <div class="message-box">
-        <h2>ORIGINAL MESSAGE:</h2>
-        <textarea placeholder="Type your message here..."></textarea>
+  
+    <!-- FORM STARTS HERE -->
+    <form action="/encrypt" method="POST">
+      <div class="cipher-selector">
+        <select name="cipher">
+          <option value="caesar" selected>Caesar Cipher</option>
+          <option value="vigenere">Vigenère Cipher</option>
+          <option value="base64">Base64</option>
+          <option value="rot13">ROT13</option>
+        </select>
       </div>
-
-      <div class="message-box encrypted">
-        <h2><span class="highlight-blue">ENCRYPTED</span> MESSAGE:</h2>
-        <textarea readonly placeholder="Encrypted output..."></textarea>
+  
+      <div class="messages-grid">
+        <div class="message-box">
+          <h2>ORIGINAL MESSAGE:</h2>
+          <textarea name="message" placeholder="Type your message here...">{{message}}</textarea>
+        </div>
+  
+        <div class="message-box encrypted">
+          <h2><span class="highlight-blue">ENCRYPTED</span> MESSAGE:</h2>
+          <textarea readonly placeholder="Encrypted output...">{{message}}</textarea>
+        </div>
       </div>
-
-    </div>
-    <label for="cipher-key">Encryption Key:</label>
-    <input type="text" id="cipher-key" placeholder="e.g. 4 or SECRET" />
-
-
-    </div>
+  
+      <label for="cipher-key">Encryption Key:</label>
+      <input type="text" name="key" id="cipher-key" placeholder="e.g. 4 or SECRET" />
+  
+      <div>
+        <button type="submit">Encrypt</button>
+      </div>
+    </form>
+    <!-- FORM ENDS HERE -->
   </main>
 </body>
 </html>
