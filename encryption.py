@@ -24,30 +24,30 @@ class CaesarCipher(Cipher):
     def encrypt(self):
         for sign in self.text_to_encrypt:
             sign_num = ord(sign)
-            if sign_num <= 90 and sign_num >= 41:
-                sign_num = (sign_num + self.shift) % 90
-                if sign_num < 41:
-                    sign_num += 41
+            if sign_num <= 90 and sign_num >= 65:
+                sign_num = (sign_num + self.shift) % 91
+                if sign_num < 65:
+                    sign_num += 65
             elif sign_num <= 122 and sign_num >= 97:
-                sign_num = (sign_num + self.shift) % 122
+                sign_num = (sign_num + self.shift) % 123
                 if sign_num < 97:
                     sign_num += 97
             self.encrypted_text += chr(sign_num)
         
         return str(self.encrypted_text)
     
-    # def decrypt(self):
-    #     for sign in self.text_to_encrypt:
-    #         sign_num = ord(sign)
-    #         if sign_num <= 90 and sign_num >= 41:
-    #             sign_num = (sign_num - self.shift)
-    #             if sign_num < 41:
-    #                 sign_num += 41
-    #         elif sign_num <= 122 and sign_num >= 97:
-    #             sign_num = (sign_num + self.shift) % 122
-    #             if sign_num < 97:
-    #                 sign_num += 97
-    #         self.encrypted_text += chr(sign_num)
+    def decrypt(self):
+        for sign in self.text_to_encrypt:
+            sign_num = ord(sign)
+            if sign_num <= 90 and sign_num >= 65:
+                sign_num = (sign_num - self.shift)
+                if sign_num < 65:
+                    sign_num = (sign_num + 26)
+            elif sign_num <= 122 and sign_num >= 97:
+                sign_num = (sign_num - self.shift)
+                if sign_num < 97:
+                    sign_num = (sign_num + 26)
+            self.encrypted_text += chr(sign_num)
         
-    #     return str(self.encrypted_text)
+        return str(self.encrypted_text)
 

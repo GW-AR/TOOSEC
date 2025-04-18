@@ -23,5 +23,19 @@ def encrypt():
         return render_template('encrypt.html')
 
 
+@app.route('/decrypt', methods=['GET', 'POST'])
+def decrypt():
+    if request.method == "POST":
+        message = request.form.get("message")
+        cipher = request.form.get("cipher")
+        key = request.form.get("key")
+        cezar = encryption.CaesarCipher(key=key, message=message)
+        encrypted_text = cezar.decrypt()
+        return render_template('decrypt.html', message=message, cipher=cipher, key=key, en_text=encrypted_text)
+    else:
+        return render_template('decrypt.html')
+    
+
+
 if __name__ == '__main__':
     app.run(debug=True)

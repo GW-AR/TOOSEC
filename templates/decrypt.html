@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TOOSEC - Decrypt</title>
-  <link rel="stylesheet" href="../static/css/decrypt.css" />
+  <title>TOOSEC - Encrypt</title>
+  <link rel="stylesheet" href="../static/css/encrypt.css" />
 </head>
 <body>
   <div class="background-overlay"></div>
@@ -13,42 +13,48 @@
     <nav class="nav-links">
       <a href="home.html">Home</a>
       <a href="password.html">Generate</a>
-      <a href="encrypt.html">Encrpyt</a>
+      <a href="{{ url_for('encrypt') }}">Encrypt</a>
       <a href="decrypt.html" class="active">Decrypt</a>
       <a href="url.html">Check URL</a>
     </nav>
     <button class="sign-in-btn">Sign in</button>
+    
   </header>
 
   <main class="encrypt-container">
     <h1>DECRYPT YOUR MESSAGE</h1>
-
-
-
-    <div class="cipher-selector">
-      <select>
-        <option selected>Caesar Cipher</option>
-        <option>Vigenère Cipher</option>
-        <option>Base64</option>
-        <option>ROT13</option>
-      </select>
-    </div>
-
-    <label for="decrypt-key">Enter Key:</label>
-    <input type="text" id="decrypt-key" placeholder="Required to decrypt..." />
-
-
-    <div class="messages-grid">
-      <div class="message-box">
-        <h2>ENCRYPTED MESSAGE:</h2>
-        <textarea placeholder="Paste encrypted message here..."></textarea>
+  
+    <!-- FORM STARTS HERE -->
+    <form action="/decrypt" method="POST">
+      <div class="cipher-selector">
+        <select name="cipher">
+          <option value="caesar" selected>Caesar Cipher</option>
+          <option value="vigenere">Vigenère Cipher</option>
+          <option value="base64">Base64</option>
+          <option value="rot13">ROT13</option>
+        </select>
       </div>
-
-      <div class="message-box encrypted">
-        <h2><span class="highlight-blue">DECRYPTED</span> MESSAGE:</h2>
-        <textarea readonly placeholder="Decrypted output..."></textarea>
+  
+      <div class="messages-grid">
+        <div class="message-box">
+          <h2>ORIGINAL MESSAGE:</h2>
+          <textarea name="message" placeholder="Type your message here...">{{message}}</textarea>
+        </div>
+  
+        <div class="message-box encrypted">
+          <h2><span class="highlight-blue">DECRYPTED</span> MESSAGE:</h2>
+          <textarea readonly placeholder="Encrypted output...">{{en_text}}</textarea>
+        </div>
       </div>
-    </div>
+  
+      <label for="cipher-key">Encryption Key:</label>
+      <input type="text" name="key" id="cipher-key" placeholder="e.g. 4 or SECRET" />
+      
+      <div>
+        <button type="submit">Decrypt</button>
+      </div>
+    </form>
+    <!-- FORM ENDS HERE -->
   </main>
 </body>
 </html>
