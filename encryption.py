@@ -81,7 +81,7 @@ class PlayfairCipher(Cipher):
             else:
                 matrix.remove(letter)
                 matrix.insert(0, letter)
-        new_matrix = [matrix[i:i+5] for i in range(0,20,5)]
+        new_matrix = [matrix[i:i+5] for i in range(0,21,5)]
         return new_matrix
     
     def create_diagrams(self):
@@ -109,7 +109,7 @@ class PlayfairCipher(Cipher):
             for letter in diagram:
                 for i, row in enumerate(self.matrix):
                     for j, val in enumerate(row):
-                        if letter == val:
+                        if letter in val:
                             letter_indexes.append((i, j))
             # same row
             if letter_indexes[0][0] == letter_indexes[1][0]:
@@ -133,7 +133,7 @@ class PlayfairCipher(Cipher):
 
 
 
-# cipher = PlayfairCipher("monarchy","testing")
-# print(cipher.matrix)
-# print(cipher.diagrams)
-# print(cipher.encrypt())
+cipher = PlayfairCipher("keyword","message")
+print(cipher.matrix)
+print(cipher.diagrams)
+print(cipher.encrypt())
