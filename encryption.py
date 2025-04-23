@@ -105,12 +105,12 @@ class PlayfairCipher(Cipher):
     def create_diagrams(self):
         diagrams = []
         message = [letter for letter in self.text_to_encrypt.upper() if letter.isalpha()]
-        for i in range(0, len(message), 2):
-            try:
-                if message[i] == message[i+1]:
-                    message.insert(i+1, "X")
-            except:
-                message.append("X")
+        # for i in range(0, len(message), 2):
+        #     try:
+        #         if message[i] == message[i+1]:
+        #             message.insert(i+1, "X")
+        #     except:
+        #         message.append("X")
         if len(message) % 2 != 0:
             message.append("X")
         self.text_to_encrypt = "".join(message)
