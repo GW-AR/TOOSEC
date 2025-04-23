@@ -28,10 +28,10 @@
     <form action="/decrypt" method="POST">
       <div class="cipher-selector">
         <select name="cipher">
-          <option value="caesar" selected>Caesar Cipher</option>
-          <option value="vigenere">Vigenère Cipher</option>
-          <option value="base64">Base64</option>
-          <option value="rot13">ROT13</option>
+          <option value="caesar" {% if cipher == 'caesar' %}selected{% endif %}>Caesar Cipher</option>
+          <option value="playfair" {% if cipher == 'playfair' %}selected{% endif %}>Playfair Cipher</option>
+          <option value="base64" {% if cipher == 'base64' %}selected{% endif %}>Base64</option>
+          <option value="rot13" {% if cipher == 'rot13' %}selected{% endif %}>ROT13</option>
         </select>
       </div>
   

@@ -59,6 +59,29 @@ class PlayfairCipher(Cipher):
         self.matrix = self.create_matrix()
         self.diagrams = self.create_diagrams()
 
+    def print_matrix(self):
+        print(f"+-----+-----+-----+-----+-----+")
+        print(f"|     |     |     |     |     |")
+        print(f"|  {self.matrix[0][0]}  |  {self.matrix[0][1]}  |  {self.matrix[0][2]}  |  {self.matrix[0][3]}  |  {self.matrix[0][4]}  |")
+        print(f"|     |     |     |     |     |")
+        print(f"+-----+-----+-----+-----+-----+")
+        print(f"|     |     |     |     |     |")
+        print(f"|  {self.matrix[1][0]}  |  {self.matrix[1][1]}  |  {self.matrix[1][2]}  |  {self.matrix[1][3]}  |  {self.matrix[1][4]}  |")
+        print(f"|     |     |     |     |     |")
+        print(f"+-----+-----+-----+-----+-----+")
+        print(f"|     |     |     |     |     |")
+        print(f"|  {self.matrix[2][0]}  |  {self.matrix[2][1]}  |  {self.matrix[2][2]}  |  {self.matrix[2][3]}  |  {self.matrix[2][4]}  |")
+        print(f"|     |     |     |     |     |")
+        print(f"+-----+-----+-----+-----+-----+")
+        print(f"|     |     |     |     |     |")
+        print(f"|  {self.matrix[3][0]}  |  {self.matrix[3][1]}  |  {self.matrix[3][2]}  |  {self.matrix[3][3]}  |  {self.matrix[3][4]}  |")
+        print(f"|     |     |     |     |     |")
+        print(f"+-----+-----+-----+-----+-----+")
+        print(f"|     |     |     |     |     |")
+        print(f"|  {self.matrix[4][0]}  |  {self.matrix[4][1]}  |  {self.matrix[4][2]}  |  {self.matrix[4][3]}  |  {self.matrix[4][4]}  |")
+        print(f"|     |     |     |     |     |")
+        print(f"+-----+-----+-----+-----+-----+")
+
     def create_matrix(self):
         matrix = [chr(i) for i in range(65, 91) if i not in (73, 74)]
         matrix.insert(8, "I/J")
@@ -132,12 +155,13 @@ class PlayfairCipher(Cipher):
 
 
 
-cipher = CaesarCipher(1, "az")
-print(cipher.encrypt())
-print()
-print(cipher.decrypt())
+# cipher = CaesarCipher(1, "abcxyz")
+# print(cipher.encrypt())
+# print()
+# print(cipher.decrypt())
 
-# cipher = PlayfairCipher("asdasdasd","aosidmaosmd")
+# cipher = PlayfairCipher("sdasdasd","sadasdas")
+# cipher.print_matrix()
 # print(cipher.matrix)
 # print(cipher.diagrams)
 # print(cipher.decrypt())

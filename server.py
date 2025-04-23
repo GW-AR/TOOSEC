@@ -16,11 +16,15 @@ def encrypt():
         message = request.form.get("message")
         cipher = request.form.get("cipher")
         key = request.form.get("key")
-        cezar = encryption.CaesarCipher(key=key, message=message)
-        encrypted_text = cezar.encrypt()
+        if cipher == "caesar":
+            caesar = encryption.CaesarCipher(key=key, message=message)
+            encrypted_text = caesar.encrypt()
+        elif cipher == "playfair":
+            playfair = encryption.PlayfairCipher(key=key, message=message)
+            encrypted_text = playfair.encrypt()
         return render_template('encrypt.html', message=message, cipher=cipher, key=key, en_text=encrypted_text)
     else:
-        return render_template('encrypt.html')
+        return render_template('encrypt.html', cipher='caesar')
 
 
 @app.route('/decrypt', methods=['GET', 'POST'])
@@ -29,8 +33,12 @@ def decrypt():
         message = request.form.get("message")
         cipher = request.form.get("cipher")
         key = request.form.get("key")
-        cezar = encryption.CaesarCipher(key=key, message=message)
-        encrypted_text = cezar.decrypt()
+        if cipher == "caesar":
+            caesar = encryption.CaesarCipher(key=key, message=message)
+            encrypted_text = caesar.decrypt()
+        elif cipher == "playfair":
+            playfair = encryption.PlayfairCipher(key=key, message=message)
+            encrypted_text = playfair.decrypt()
         return render_template('decrypt.html', message=message, cipher=cipher, key=key, en_text=encrypted_text)
     else:
         return render_template('decrypt.html')
