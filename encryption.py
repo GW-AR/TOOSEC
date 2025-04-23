@@ -22,36 +22,27 @@ class CaesarCipher(Cipher):
         except:
             self.shift = 0
 
-
-    def encrypt(self):
+    
+    def encryption(self, x):
         for sign in self.text_to_encrypt:
             sign_num = ord(sign)
             if sign_num <= 90 and sign_num >= 65:
-                sign_num = (sign_num + self.shift) % 91
+                sign_num = (sign_num + self.shift*x) % 91
                 if sign_num < 65:
-                    sign_num += 65
+                    sign_num = (sign_num + 65)
             elif sign_num <= 122 and sign_num >= 97:
-                sign_num = (sign_num + self.shift) % 123
+                sign_num = (sign_num + self.shift*x) % 123
                 if sign_num < 97:
-                    sign_num += 97
+                    sign_num = (sign_num + 97)
             self.encrypted_text += chr(sign_num)
         
         return str(self.encrypted_text)
     
+    def encrypt(self):
+        return self.encryption(1)
+    
     def decrypt(self):
-        for sign in self.text_to_encrypt:
-            sign_num = ord(sign)
-            if sign_num <= 90 and sign_num >= 65:
-                sign_num = (sign_num - self.shift)
-                if sign_num < 65:
-                    sign_num = (sign_num + 26)
-            elif sign_num <= 122 and sign_num >= 97:
-                sign_num = (sign_num - self.shift)
-                if sign_num < 97:
-                    sign_num = (sign_num + 26)
-            self.encrypted_text += chr(sign_num)
-        
-        return str(self.encrypted_text)
+        return self.encryption(-1)
 
 
 class PlayfairCipher(Cipher):
@@ -137,7 +128,8 @@ class PlayfairCipher(Cipher):
 
 
 
-
+cipher = CaesarCipher(2, "adamvyz")
+print(cipher.encrypt())
 
 # cipher = PlayfairCipher("asdasdasd","aosidmaosmd")
 # print(cipher.matrix)
