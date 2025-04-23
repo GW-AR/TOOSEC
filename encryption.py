@@ -66,7 +66,7 @@ class PlayfairCipher(Cipher):
 
     def create_matrix(self):
         matrix = [chr(i) for i in range(65, 91) if i not in (73, 74)]
-        matrix.insert(8, "IJ")
+        matrix.insert(8, "I/J")
         # remove duplicated letters
         key_word = ""
         for letter in self.keyword:
@@ -76,8 +76,8 @@ class PlayfairCipher(Cipher):
         key_word = key_word[::-1]
         for letter in key_word.upper():
             if letter in "IJ":
-                matrix.remove("IJ")
-                matrix.insert(0, "IJ")
+                matrix.remove("I/J")
+                matrix.insert(0, "I/J")
             else:
                 matrix.remove(letter)
                 matrix.insert(0, letter)
@@ -101,7 +101,7 @@ class PlayfairCipher(Cipher):
         return diagrams
 
 
-    def encrypt(self):
+    def encryption(self, x):
         encrypted_diagrams = []
         for diagram in self.diagrams:
             letter_indexes = []
@@ -113,12 +113,12 @@ class PlayfairCipher(Cipher):
                             letter_indexes.append((i, j))
             # same row
             if letter_indexes[0][0] == letter_indexes[1][0]:
-                bi += self.matrix[letter_indexes[0][0]][(letter_indexes[0][1]+1)%5]
-                bi += self.matrix[letter_indexes[1][0]][(letter_indexes[1][1]+1)%5]
+                bi += self.matrix[letter_indexes[0][0]][(letter_indexes[0][1]+x)%5]
+                bi += self.matrix[letter_indexes[1][0]][(letter_indexes[1][1]+x)%5]
             # same column
             elif letter_indexes[0][1] == letter_indexes[1][1]:
-                bi += self.matrix[(letter_indexes[0][0]+1)%5][letter_indexes[0][1]]
-                bi += self.matrix[(letter_indexes[1][0]+1)%5][letter_indexes[0][1]]
+                bi += self.matrix[(letter_indexes[0][0]+x)%5][letter_indexes[0][1]]
+                bi += self.matrix[(letter_indexes[1][0]+x)%5][letter_indexes[0][1]]
             # different column and row
             else:
                 bi += self.matrix[letter_indexes[0][0]][letter_indexes[1][1]]
@@ -128,12 +128,18 @@ class PlayfairCipher(Cipher):
             
         self.encrypted_text = " ".join(encrypted_diagrams)
         return str(self.encrypted_text)
+    
+    def encrypt(self):
+        return self.encryption(1)
+    
+    def decrypt(self):
+        return self.encryption(-1)
 
 
 
 
 
-cipher = PlayfairCipher("keyword","message")
-print(cipher.matrix)
-print(cipher.diagrams)
-print(cipher.encrypt())
+# cipher = PlayfairCipher("asdasdasd","aosidmaosmd")
+# print(cipher.matrix)
+# print(cipher.diagrams)
+# print(cipher.decrypt())
