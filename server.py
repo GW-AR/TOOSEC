@@ -22,6 +22,9 @@ def encrypt():
         elif cipher == "playfair":
             playfair = encryption.PlayfairCipher(key=key, message=message)
             encrypted_text = playfair.encrypt()
+        elif cipher == "base64":
+            base64_cipher = encryption.Base64(message=message)
+            encrypted_text = base64_cipher.encode()
         return render_template('encrypt.html', message=message, cipher=cipher, key=key, en_text=encrypted_text)
     else:
         return render_template('encrypt.html', cipher='caesar')
@@ -39,6 +42,9 @@ def decrypt():
         elif cipher == "playfair":
             playfair = encryption.PlayfairCipher(key=key, message=message)
             encrypted_text = playfair.decrypt()
+        elif cipher == "base64":
+            base64_cipher = encryption.Base64(message=message)
+            encrypted_text = base64_cipher.decode()
         return render_template('decrypt.html', message=message, cipher=cipher, key=key, en_text=encrypted_text)
     else:
         return render_template('decrypt.html')

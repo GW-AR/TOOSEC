@@ -1,4 +1,4 @@
-import random
+import base64
 
 # Here will be the encryption logic:
 """
@@ -152,6 +152,32 @@ class PlayfairCipher(Cipher):
     
     def decrypt(self):
         return self.encryption(-1)
+
+
+class Base64(Cipher):
+    def __init__(self, message):
+        super().__init__(message)
+
+
+    def encode(self):
+        encoded = base64.b64encode(self.text_to_encrypt.encode()).decode('utf-8')
+        self.encrypted_text = encoded
+        return encoded
+
+    
+    def decode(self):
+        text = self.text_to_encrypt
+
+        if text.startswith("b'") and text.endswith("'"):
+            text = text[2:-1]
+
+        decoded_bytes = base64.b64decode(text)
+        decoded_str = decoded_bytes.decode('utf-8')
+        self.encrypted_text = decoded_str
+        return decoded_str
+
+
+
 
 
 
