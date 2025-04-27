@@ -58,7 +58,7 @@ def password_generator():
 
     if request.method == 'GET':
         password_object = password.Password(12,"on", "on", 1,"on",1)
-        return render_template('password.html', password_options=password_object)
+        return render_template('password.html', password_options=password_object, current_page='generator')
     
     elif request.method == 'POST':
 
@@ -80,7 +80,7 @@ def password_generator():
 
         generated_password = password_object.generate_password()
 
-        return render_template('password.html', generated_password=generated_password, password_options=password_object)
+        return render_template('password.html', generated_password=generated_password, password_options=password_object, current_page='generator')
 
 
 
@@ -89,13 +89,13 @@ def url():
 
     if request.method == 'GET':
         page = url_class.Url("")
-        return render_template('url.html', page_object=page)
+        return render_template('url.html', page_object=page, current_page='url')
 
     elif request.method == 'POST':
 
         page = url_class.Url(request.form['link_url'])
         page.check_url_address()
-        return render_template('url.html', page_object=page)
+        return render_template('url.html', page_object=page, current_page='url')
 
 if __name__ == '__main__':
     app.run(debug=True)

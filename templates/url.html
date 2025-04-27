@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Check URL</title>
-  <link rel="stylesheet" href="../static/css/url.css" />
+  <link rel="stylesheet" href="../static/css/base.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <link rel="stylesheet" href="../static/css/url.css" />
 </head>
 <body>
   <div class="background-overlay"></div>
@@ -25,7 +26,7 @@
           {% endif %}
           />
           <div class="encrypt-buttons">
-            <button class="submit">Check</button>
+            <button type="submit" class="action-btn">Check</button>
           </div>
         </div>
       </div>
@@ -33,35 +34,53 @@
   </div>
 
     <div class="encrypt-container_results">
-    {% if page_object.address_url != ""%}
-    <h1>{{ page_object.address_url }}</h1>
-      <div class="progress" role="progressbar" aria-label="Default striped example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="{{page_object.number_of_security_tools}}">
-        <div class="progress-bar progress-bar-striped bg-danger text-inside" style="width:{{page_object.list_of_analysis_stats['malicious']}}%">
-          malicious
+      {% if page_object.address_url != "" %}
+      <h1>{{ page_object.address_url }}</h1>
+    
+      <div class="progress-container">
+        <div class="progress-row">
+          <span class="progress-label">malicious</span>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger" 
+                 style="width: {{page_object.list_of_analysis_stats['malicious']}}%">
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div class="progress" role="progressbar" aria-label="Success striped example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="{{page_object.number_of_security_tools}}">
-        <div class="progress-bar progress-bar-striped bg-warning text-inside" style="width: {{page_object.list_of_analysis_stats['suspicious']}}%">
-          suspicious
+    
+        <div class="progress-row">
+          <span class="progress-label">suspicious</span>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-warning" 
+                 style="width: {{page_object.list_of_analysis_stats['suspicious']}}%">
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div class="progress" role="progressbar" aria-label="Info striped example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="{{page_object.number_of_security_tools}}">
-        <div class="progress-bar progress-bar-striped bg-info text-inside" style="width: {{page_object.list_of_analysis_stats['undetected']}}%">
-          undetected
+    
+        <div class="progress-row">
+          <span class="progress-label">undetected</span>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-info" 
+                 style="width: {{page_object.list_of_analysis_stats['undetected']}}%">
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div class="progress" role="progressbar" aria-label="Warning striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="{{page_object.number_of_security_tools}}">
-        <div class="progress-bar progress-bar-striped bg-success text-inside" style="width: {{page_object.list_of_analysis_stats['harmless']}}%">
-          harmless
+    
+        <div class="progress-row">
+          <span class="progress-label">harmless</span>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-success" 
+                 style="width: {{page_object.list_of_analysis_stats['harmless']}}%">
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div class="progress" role="progressbar" aria-label="Danger striped example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="{{page_object.number_of_security_tools}}">
-        <div class="progress-bar progress-bar-striped bg-light text-inside" style="width: {{page_object.list_of_analysis_stats['timeout']}}%">
-          timeout
+    
+        <div class="progress-row">
+          <span class="progress-label">timeout</span>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-light" 
+                 style="width: {{page_object.list_of_analysis_stats['timeout']}}%">
+            </div>
+          </div>
         </div>
       </div>
     {% endif %}

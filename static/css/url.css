@@ -1,18 +1,20 @@
-/* Reset */
-* {
+  /* Reset */
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-  
+
   body {
     font-family: 'Segoe UI', sans-serif;
     color: white;
     background: linear-gradient(to right, #0c1e46, #0c1e46);
     min-height: 100vh;
     background-image: url('../images/tlo.jpg');
+    margin: 0 !important;
+    padding: 0 !important;
   }
-  
+
   .background-overlay {
     position: fixed;
     top: 0;
@@ -37,23 +39,26 @@
     background-color: transparent;
     color: white;
   }
-  
-  .logo {
+
+
+  .logo a {
+    color: white;
+    text-decoration: none;
     font-weight: bold;
     font-size: 1.5rem;
   }
-  
+
   .nav-links a {
     color: white;
     margin: 0 15px;
     text-decoration: none;
     font-size: 0.9rem;
   }
-  
+
   .nav-links a.active {
     color: #2196f3;
   }
-  
+
   .sign-in-btn {
     background-color: rgba(255, 255, 255, 0.1);
     border: none;
@@ -62,6 +67,7 @@
     color: white;
     cursor: pointer;
   }
+
   
   /* Main content */
   .encrypt-container {
@@ -264,3 +270,28 @@
   font-size: 2rem !important;
 }
 
+.progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.progress-label {
+  width: 120px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: right;
+  color: white;
+}
+
+.progress {
+  flex-grow: 1;
+  height: 30px;
+}

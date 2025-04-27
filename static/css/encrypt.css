@@ -40,11 +40,11 @@
 
 
   .logo a {
-    color: white;       /* biały kolor tekstu */
-    text-decoration: none; /* brak podkreślenia */
+    color: white;
+    text-decoration: none;
     font-weight: bold;
     font-size: 1.5rem;
-}
+  }
   
   .nav-links a {
     color: white;
