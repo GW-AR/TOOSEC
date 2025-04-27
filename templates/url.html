@@ -4,42 +4,110 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Check URL</title>
+  <link rel="stylesheet" href="../static/css/base.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
   <link rel="stylesheet" href="../static/css/url.css" />
 </head>
 <body>
   <div class="background-overlay"></div>
-  <div class="navbar">
-    <div class="logo">TOOSEC</div>
-    <div class="nav-links">
-      <a href="home.html">Home</a>
-      <a href="password.html">Generate</a>
-      <a href="encrypt.html">Encrypt</a>
-      <a href="decrypt.html">Decrypt</a>
-      <a href="url.html" class="active">Check URL</a>
-    </div>
-    <button class="sign-in-btn">Sign in</button>
-  </div>
+  {% include 'header.html' %}
 
   <div class="encrypt-container">
     <h1>CHECK URL SAFETY</h1>
-
-    <div class="messages-grid">
-      <div class="message-box">
-        <h2>ENTER URL:</h2>
-        <input type="text" id="urlInput" placeholder="https://example.com" />
-        <div class="encrypt-buttons">
-          <button class="action-btn">Check</button>
+    <form method="post" action="{{ url_for('url') }}">
+      <div class="messages-grid">
+        <div class="message-box">
+          <h2>ENTER URL:</h2>
+          <input name="link_url" type="text" id="urlInput"
+          {% if page_object.address_url != ""%}
+            placeholder="{{page_object.address_url}}"
+          {% else %}
+            placeholder="https://example.com"
+          {% endif %}
+          />
+          <div class="encrypt-buttons">
+            <button type="submit" class="action-btn">Check</button>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 
-  <div class="messages-grid">
-    <div class="message-box">
-        <h2><span class="highlight-blue">RESULT:</span></h2>
-        <div id="result" style="padding-top: 10px;">Awaiting input...</div>
+    <div class="encrypt-container_results">
+      {% if page_object.address_url != "" %}
+      <h1>{{ page_object.address_url }}</h1>
+    
+      <div class="progress-container">
+        <div class="progress-row">
+          <span class="progress-label">malicious</span>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger" 
+                 style="width: {{page_object.list_of_analysis_stats['malicious']}}%">
+            </div>
+          </div>
+        </div>
+    
+        <div class="progress-row">
+          <span class="progress-label">suspicious</span>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-warning" 
+                 style="width: {{page_object.list_of_analysis_stats['suspicious']}}%">
+            </div>
+          </div>
+        </div>
+    
+        <div class="progress-row">
+          <span class="progress-label">undetected</span>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-info" 
+                 style="width: {{page_object.list_of_analysis_stats['undetected']}}%">
+            </div>
+          </div>
+        </div>
+    
+        <div class="progress-row">
+          <span class="progress-label">harmless</span>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-success" 
+                 style="width: {{page_object.list_of_analysis_stats['harmless']}}%">
+            </div>
+          </div>
+        </div>
+    
+        <div class="progress-row">
+          <span class="progress-label">timeout</span>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-light" 
+                 style="width: {{page_object.list_of_analysis_stats['timeout']}}%">
+            </div>
+          </div>
+        </div>
       </div>
+    {% endif %}
+    </div>
+
+
+
+  <div class="results-grid">
+    {% if page_object.address_url != "" %}
+      {% for tool in page_object.list_of_security_tools %}
+        <div class="result-card">
+          <h3 class="tool-name">{{ tool }}</h3>
+          <ul class="details-list">
+            <li><span class="label">Method:</span> {{ page_object.results_list[tool]['method'] }}</li>
+            <li><span class="label">Category:</span> {{ page_object.results_list[tool]['category'] }}</li>
+            <li>
+              <span class="label">Result:</span>
+              <span class="result {{ page_object.results_list[tool]['result'] | lower }}">
+                {{ page_object.results_list[tool]['result'] }}
+              </span>
+            </li>
+          </ul>
+        </div>
+      {% endfor %}
+    {% endif %}
   </div>
+
 
 
 </body>

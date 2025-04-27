@@ -1,32 +1,29 @@
 
-
+# Python cache & compiled files
 __pycache__/
 *.pyc
 *.pyo
 
-
+# Virtual environment
 .venv/
 env/
 venv/
 
-
+# VSCode / PyCharm 
 .vscode/
 .idea/
 *.iml
 
-
+# sys trash
 .DS_Store
 Thumbs.db
 
-
+# Logs / temp files
 *.log
 *.tmp
 
-
+# Others
 Pipfile.lock
 poetry.lock
-
-.idea/
-.venv/
-
-
+.env
+.idea

@@ -4,23 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TOOSEC - Cybersecurity</title>
-  <link rel="stylesheet" href="../static/css/home.css?v=4" />
+  <link rel="stylesheet" href="../static/css/base.css" />
+  <link rel="stylesheet" href="../static/css/home.css" />
 </head>
 <body>
   
   <div class="background-overlay"></div>
-  <div class="navbar">
-    <div class="logo">TOOSEC</div>
-    <div class="nav-links">
-      <a href="password.html">Generate</a>
-      <a href="encrypt.html">Encrypt</a>
-      <a href="decrypt.html">Decrypt</a>
-      <a href="url.html" class="active">Check URL</a>
-    </div>
-    <button class="sign-in-btn">Sign in</button>
-  </div>
+    {% include 'header.html' %}
   
-
   <section class="hero">
     <div class="hero-text">
       <h1>Learn And Practice<br><span class="highlight">CYBERSECURITY</span></h1>
