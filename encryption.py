@@ -1,12 +1,6 @@
 import base64
 
-# Here will be the encryption logic:
-"""
-- Caesar Cipher
-- Playfair Cipher
-- Base64
-- etc
-"""
+
 
 class Cipher():
     def __init__(self, message):
@@ -88,7 +82,7 @@ class PlayfairCipher(Cipher):
         # remove duplicated letters
         key_word = ""
         for letter in self.keyword:
-            if letter not in key_word:
+            if letter not in key_word and letter.isalpha():
                 key_word += letter
         # create matrix
         key_word = key_word[::-1]

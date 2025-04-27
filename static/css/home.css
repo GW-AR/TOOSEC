@@ -75,7 +75,9 @@
     color: white;
   }
   
-  .logo {
+  .logo a {
+    color: white;       /* biały kolor tekstu */
+    text-decoration: none; /* brak podkreślenia */
     font-weight: bold;
     font-size: 1.5rem;
   }

@@ -8,18 +8,7 @@
 </head>
 <body>
   <div class="background-overlay"></div>
-  <header class="navbar">
-    <div class="logo">TOOSEC</div>
-    <nav class="nav-links">
-      <a href="home.html">Home</a>
-      <a href="password.html">Generate</a>
-      <a href="{{ url_for('encrypt') }}">Encrypt</a>
-      <a href="decrypt.html" class="active">Decrypt</a>
-      <a href="url.html">Check URL</a>
-    </nav>
-    <button class="sign-in-btn">Sign in</button>
-    
-  </header>
+  {% include 'header.html' %}
 
   <main class="encrypt-container">
     <h1>DECRYPT YOUR MESSAGE</h1>
@@ -27,11 +16,10 @@
     <!-- FORM STARTS HERE -->
     <form action="/decrypt" method="POST">
       <div class="cipher-selector">
-        <select name="cipher">
+        <select name="cipher" id="cipher-select">
           <option value="caesar" {% if cipher == 'caesar' %}selected{% endif %}>Caesar Cipher</option>
           <option value="playfair" {% if cipher == 'playfair' %}selected{% endif %}>Playfair Cipher</option>
           <option value="base64" {% if cipher == 'base64' %}selected{% endif %}>Base64</option>
-          <option value="rot13" {% if cipher == 'rot13' %}selected{% endif %}>ROT13</option>
         </select>
       </div>
   
@@ -43,18 +31,41 @@
   
         <div class="message-box encrypted">
           <h2><span class="highlight-blue">DECRYPTED</span> MESSAGE:</h2>
-          <textarea readonly placeholder="Encrypted output...">{{en_text}}</textarea>
+          <textarea readonly placeholder="Decrypted output...">{{en_text}}</textarea>
         </div>
       </div>
-  
-      <label for="cipher-key">Encryption Key:</label>
-      <input type="text" name="key" id="cipher-key" placeholder="e.g. 4 or SECRET" />
-      
+      <div id="cipher-key-field">
+        <label for="cipher-key">Decryption Key:</label>
+        <input type="text" name="key" id="cipher-key" placeholder="e.g. 4 or SECRET" />
+      </div>
       <div>
-        <button type="submit">Decrypt</button>
+        <button class="action-btn" type="submit">Decrypt</button>
       </div>
     </form>
     <!-- FORM ENDS HERE -->
   </main>
+  <script>
+    const cipherSelect = document.getElementById('cipher-select');
+    const keyField = document.getElementById('cipher-key-field');
+
+    function updateKeyFieldVisibility() {
+      const selectedCipher = cipherSelect.value;
+      
+      if (selectedCipher === 'base64') {
+        keyField.style.display = 'none';
+      } else {
+        keyField.style.display = 'block';
+      }
+    }
+
+    cipherSelect.addEventListener('change', function() {
+      updateKeyFieldVisibility();
+    });
+
+    window.addEventListener('DOMContentLoaded', function() {
+      updateKeyFieldVisibility();
+    });
+
+  </script>
 </body>
 </html>

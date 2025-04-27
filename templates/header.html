@@ -1,0 +1,14 @@
+<header class="navbar">
+  <div class="logo">
+    <a href="{{ url_for('home') }}">TOOSEC</a>
+  </div>
+  <nav class="nav-links">
+    <a href="{{ url_for('home') }}" {% if current_page == 'home' %}class="active"{% endif %}>Home</a>
+    <a href="#" {% if current_page == 'generate' %}class="active"{% endif %}>Generate</a>
+    <a href="{{ url_for('encrypt') }}" {% if current_page == 'encrypt' %}class="active"{% endif %}>Encrpyt</a>
+    <a href="{{ url_for('decrypt') }}" {% if current_page == 'decrypt' %}class="active"{% endif %}>Decrypt</a>
+    <a href="#" {% if current_page == 'url' %}class="active"{% endif %}>Check URL</a>
+  </nav>
+  <!-- <button class="sign-in-btn">Sign in</button> -->
+    
+</header>

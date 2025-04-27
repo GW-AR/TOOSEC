@@ -9,16 +9,7 @@
 <body>
   
   <div class="background-overlay"></div>
-  <div class="navbar">
-    <div class="logo">TOOSEC</div>
-    <div class="nav-links">
-      <a href="password.html">Generate</a>
-      <a href="{{ url_for('encrypt') }}">Encrypt</a>
-      <a href="{{ url_for('decrypt') }}">Decrypt</a>
-      <a href="url.html" class="active">Check URL</a>
-    </div>
-    <button class="sign-in-btn">Sign in</button>
-  </div>
+    {% include 'header.html' %}
   
 
   <section class="hero">

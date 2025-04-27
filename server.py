@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('home.html', current_page='home')
 
 @app.route('/encrypt', methods=['GET', 'POST'])
 def encrypt():
@@ -25,9 +25,9 @@ def encrypt():
         elif cipher == "base64":
             base64_cipher = encryption.Base64(message=message)
             encrypted_text = base64_cipher.encode()
-        return render_template('encrypt.html', message=message, cipher=cipher, key=key, en_text=encrypted_text)
+        return render_template('encrypt.html', message=message, cipher=cipher, key=key, en_text=encrypted_text, current_page='encrypt')
     else:
-        return render_template('encrypt.html', cipher='caesar')
+        return render_template('encrypt.html', cipher='caesar', current_page='encrypt')
 
 
 @app.route('/decrypt', methods=['GET', 'POST'])
@@ -45,9 +45,9 @@ def decrypt():
         elif cipher == "base64":
             base64_cipher = encryption.Base64(message=message)
             encrypted_text = base64_cipher.decode()
-        return render_template('decrypt.html', message=message, cipher=cipher, key=key, en_text=encrypted_text)
+        return render_template('decrypt.html', message=message, cipher=cipher, key=key, en_text=encrypted_text, current_page='decrypt')
     else:
-        return render_template('decrypt.html')
+        return render_template('decrypt.html', current_page='decrypt')
     
 
 

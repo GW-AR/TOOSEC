@@ -8,18 +8,7 @@
 </head>
 <body>
   <div class="background-overlay"></div>
-  <header class="navbar">
-    <div class="logo">TOOSEC</div>
-    <nav class="nav-links">
-      <a href="home.html">Home</a>
-      <a href="password.html">Generate</a>
-      <a href="encrypt.html" class="active">Encrpyt</a>
-      <a href="{{ url_for('decrypt') }}">Decrypt</a>
-      <a href="url.html">Check URL</a>
-    </nav>
-    <button class="sign-in-btn">Sign in</button>
-    
-  </header>
+  {% include 'header.html' %}
 
   <main class="encrypt-container">
     <h1>ENCRYPT YOUR MESSAGE</h1>
@@ -27,11 +16,10 @@
     <!-- FORM STARTS HERE -->
     <form action="/encrypt" method="POST">
       <div class="cipher-selector">
-        <select name="cipher">
+        <select name="cipher" id="cipher-select">
           <option value="caesar" {% if cipher == 'caesar' %}selected{% endif %}>Caesar Cipher</option>
           <option value="playfair" {% if cipher == 'playfair' %}selected{% endif %}>Playfair Cipher</option>
           <option value="base64" {% if cipher == 'base64' %}selected{% endif %}>Base64</option>
-          <option value="rot13" {% if cipher == 'rot13' %}selected{% endif %}>ROT13</option>
         </select>
       </div>
   
@@ -46,15 +34,39 @@
           <textarea readonly placeholder="Encrypted output...">{{en_text}}</textarea>
         </div>
       </div>
-  
-      <label for="cipher-key">Encryption Key:</label>
-      <input type="text" name="key" id="cipher-key" placeholder="e.g. 4 or SECRET" />
-      
+      <div id="cipher-key-field">
+        <label for="cipher-key">Encryption Key:</label>
+        <input type="text" name="key" id="cipher-key" placeholder="e.g. 4 or SECRET" />
+      </div>
       <div>
-        <button type="submit">Encrypt</button>
+        <button class="action-btn" type="submit">Encrypt</button>
       </div>
     </form>
     <!-- FORM ENDS HERE -->
   </main>
+  <script>
+    const cipherSelect = document.getElementById('cipher-select');
+    const keyField = document.getElementById('cipher-key-field');
+
+    function updateKeyFieldVisibility() {
+      const selectedCipher = cipherSelect.value;
+      
+      if (selectedCipher === 'base64') {
+        keyField.style.display = 'none';
+      } else {
+        keyField.style.display = 'block';
+      }
+    }
+
+    cipherSelect.addEventListener('change', function() {
+      updateKeyFieldVisibility();
+    });
+
+    window.addEventListener('DOMContentLoaded', function() {
+      updateKeyFieldVisibility();
+    });
+
+  </script>
+  
 </body>
 </html>
