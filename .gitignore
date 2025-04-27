@@ -1,27 +1,28 @@
+
 # Python cache & compiled files
 __pycache__/
 *.pyc
 *.pyo
 
-# Virtual environment (bardzo ważne)
+# Virtual environment
 .venv/
 env/
 venv/
 
-# VSCode / PyCharm / inne IDE
+# VSCode / PyCharm 
 .vscode/
 .idea/
 *.iml
 
-# Systemowe śmieci
+# sys trash
 .DS_Store
 Thumbs.db
 
-# Logi / pliki tymczasowe
+# Logs / temp files
 *.log
 *.tmp
 
-# Inne zależności (jeśli kiedyś użyjesz pipenv/poetry)
+# Others
 Pipfile.lock
 poetry.lock
 .env
