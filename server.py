@@ -1,9 +1,10 @@
+
 from flask import Flask
 from flask import render_template
 from flask import request
 import encryption
 import password
-
+import url_class
 
 app = Flask(__name__)
 
@@ -82,6 +83,19 @@ def password_generator():
         return render_template('password.html', generated_password=generated_password, password_options=password_object)
 
 
+
+@app.route('/url', methods=['GET', 'POST'])
+def url():
+
+    if request.method == 'GET':
+        page = url_class.Url("")
+        return render_template('url.html', page_object=page)
+
+    elif request.method == 'POST':
+
+        page = url_class.Url(request.form['link_url'])
+        page.check_url_address()
+        return render_template('url.html', page_object=page)
 
 if __name__ == '__main__':
     app.run(debug=True)
