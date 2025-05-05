@@ -51,6 +51,7 @@ class PlayfairCipher(Cipher):
         except:
             self.keyword = ""
         self.matrix = self.create_matrix()
+        self.print_matrix()
         self.diagrams = self.create_diagrams()
 
     def print_matrix(self):
