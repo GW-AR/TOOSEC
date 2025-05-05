@@ -12,16 +12,51 @@
   <div class="background-overlay"></div>
     {% include 'header.html' %}
   
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Learn And Practice<br><span class="highlight">CYBERSECURITY</span></h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do<br>
-        eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
-        Ut enim ad minim veniam, quis nostrud exercitation.
-      </p>
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Secure. Analyze. Learn.</h1>
+        <p class="subtitle">
+          Discover hands-on cybersecurity tools to encrypt messages, generate strong passwords,
+          and check the safety of any link — all in one place.
+        </p>
+        <!-- <div class="hero-buttons">
+          <a href="{{ url_for('encrypt') }}" class="btn primary">Start Encrypting</a>
+          <a href="{{ url_for('password_generator') }}" class="btn secondary">Generate Password</a>
+        </div> -->
+      </div>
+    </section>
+    
+
+  <section class="features">
+    <h2>Explore TOOSEC Tools</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>🔐 Encrypt & Decrypt</h3>
+        <p>Use Caesar, Playfair, or Base64 to secure your messages.</p>
+        <a href="{{ url_for('encrypt') }}" class="btn">Try Encryption</a>
+      </div>
+      <div class="feature-card">
+        <h3>🛡️ Password Generator</h3>
+        <p>Create strong, customized passwords with specific rules.</p>
+        <a href="{{ url_for('password_generator') }}" class="btn">Generate Password</a>
+      </div>
+      <div class="feature-card">
+        <h3>🌐 Check URL Safety</h3>
+        <p>Scan links using VirusTotal API to detect potential threats.</p>
+        <a href="{{ url_for('url') }}" class="btn">Check URL</a>
+      </div>
     </div>
   </section>
   
+  <section class="about">
+    <h2>About TOOSEC</h2>
+    <p>TOOSEC is a student-driven cybersecurity platform offering tools to help you learn, test, and implement basic security techniques like encryption, secure password generation, and link validation.</p>
+  </section>
+
+  {% include 'footer.html' %}
+  
 </body>
 </html>
+
+
+

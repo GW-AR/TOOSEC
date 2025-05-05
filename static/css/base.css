@@ -244,3 +244,25 @@
     color: white;
   }
   
+  .footer {
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 0.9rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #aaa;
+    margin-top: 40px;
+  }
+
+  html, body {
+    height: 100%;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  main {
+    flex: 1;
+  }
+  
